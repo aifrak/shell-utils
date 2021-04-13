@@ -3,7 +3,7 @@ name: Markdown linter
 on:
   push:
     paths:
-      - "**.md"
+      - '**.md'
 
 jobs:
   linters:

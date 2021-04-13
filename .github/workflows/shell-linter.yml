@@ -3,9 +3,9 @@ name: Shell linter
 on:
   push:
     paths-ignore:
-      - "*.vscode"
-      - "**.md"
-      - "LICENSE"
+      - '.vscode/**'
+      - '**.md'
+      - 'LICENSE'
 
 jobs:
   linters:

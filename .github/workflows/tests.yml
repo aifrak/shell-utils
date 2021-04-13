@@ -2,6 +2,10 @@ name: Tests
 
 on:
   push:
+    paths-ignore:
+      - '.vscode/**'
+      - '**.md'
+      - 'LICENSE'
 
 jobs:
   tests:

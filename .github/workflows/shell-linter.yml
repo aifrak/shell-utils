@@ -1,0 +1,20 @@
+name: Shell linter
+
+on:
+  push:
+    paths-ignore:
+      - "*.vscode"
+      - "**.md"
+      - "LICENSE"
+
+jobs:
+  linters:
+    name: Shell linter
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Shell linter (ShellCheck)
+        run: make shell-linter

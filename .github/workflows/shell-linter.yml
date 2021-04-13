@@ -1,4 +1,4 @@
-name: Tests
+name: Shell linter
 
 on:
   push:
@@ -8,13 +8,13 @@ on:
       - 'LICENSE'
 
 jobs:
-  tests:
-    name: Tests
+  linters:
+    name: Shell linter
     runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Run unit tests
-        run: make shell-tests-format shell-tests
+      - name: Shell linter (ShellCheck)
+        run: make shell-linter

@@ -10,6 +10,8 @@ Collection of shell functions.
 
 You can copy the file `/src/shell-utils.sh` for direct usage.
 
+hello
+
 ## Warning ⚠️
 
 This project is only to learn Shell, Shellcheck and Shellspec.

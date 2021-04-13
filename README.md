@@ -2,6 +2,8 @@
 
 Collection of shell functions.
 
+[![Tests](https://github.com/aifrak/shell-utils/actions/workflows/tests.yml/badge.svg)](https://github.com/aifrak/shell-utils/actions/workflows/tests.yml)
+[![Linters](https://github.com/aifrak/shell-utils/actions/workflows/linters.yml/badge.svg)](https://github.com/aifrak/shell-utils/actions/workflows/linters.yml)
 [![GitHub](https://img.shields.io/github/license/aifrak/makefile-utils?color=blue)](https://github.com/aifrak/shell-utils/blob/master/LICENSE)
 
 ## Usage
@@ -25,7 +27,7 @@ Required:
 To run the unit tests:
 
 ```shell
-make test-all
+make shell-test-all
 ```
 
 ## Technologies

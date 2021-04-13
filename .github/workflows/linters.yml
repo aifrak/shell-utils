@@ -1,0 +1,21 @@
+name: Linters
+
+on:
+  push:
+
+jobs:
+  linters:
+    name: Linters
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Shell linter (ShellCheck)
+        run: make shell-linter
+
+      - name: Markdown linter (markdownlint-cli)
+        uses: nosborn/github-action-markdown-cli@v1.1.1
+        with:
+          files: .

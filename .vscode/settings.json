@@ -1,0 +1,25 @@
+{
+  // Spelling:
+  "cSpell.userWords": [
+    "Shellcheck",
+    "Shellspec",
+  ],
+  "cSpell.words": [
+    "markdownlint",
+    "nosborn"
+  ],
+
+  // Shellcheck:
+  "shellcheck.customArgs": ["--shell=sh", "--format=tty", "-x"],
+  "shellcheck.useWorkspaceRootAsCwd": true,
+
+  // Task explorer:
+  "taskExplorer.exclude": [
+    "**/spec/**",
+  ],
+
+  // Markdownlint:
+  "markdownlint.config": {
+    "MD013": true
+  }
+}

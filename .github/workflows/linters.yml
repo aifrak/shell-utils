@@ -5,7 +5,6 @@ on:
 
 jobs:
   linters:
-    name: Linters
     runs-on: ubuntu-20.04
 
     steps:

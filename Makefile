@@ -1,6 +1,6 @@
 #!/bin/sh
 
-MAKEFILE_UTILS_DIR := ./script/makefile/makefile-utils
+MAKEFILE_UTILS_DIR := ./scripts/makefile/makefile-utils
 
 include $(MAKEFILE_UTILS_DIR)/shell-test.mk
 

@@ -3,8 +3,8 @@
 Collection of shell functions.
 
 [![Tests](https://github.com/aifrak/shell-utils/actions/workflows/tests.yml/badge.svg)](https://github.com/aifrak/shell-utils/actions/workflows/tests.yml)
-[![Markdown linter](https://github.com/aifrak/shell-utils/actions/workflows/markdown-linter.yml/badge.svg)](https://github.com/aifrak/shell-utils/actions/workflows/markdown-linter.yml)
-[![Shell linter](https://github.com/aifrak/shell-utils/actions/workflows/shell-linter.yml/badge.svg)](https://github.com/aifrak/shell-utils/actions/workflows/shell-linter.yml)
+[![Markdown lint](https://github.com/aifrak/shell-utils/actions/workflows/markdown-lint.yml/badge.svg)](https://github.com/aifrak/shell-utils/actions/workflows/markdown-lint.yml)
+[![Shell lint](https://github.com/aifrak/shell-utils/actions/workflows/shell-lint.yml/badge.svg)](https://github.com/aifrak/shell-utils/actions/workflows/shell-lint.yml)
 [![GitHub](https://img.shields.io/github/license/aifrak/makefile-utils?color=blue)](https://github.com/aifrak/shell-utils/blob/master/LICENSE)
 
 ## Usage

@@ -49,7 +49,7 @@ shell-test:
 	@echo ""
 	@echo "- Run Shell unit tests:"
 	@echo ""
-	@$(DOCKER) run -it --rm -v "${SHELLSPEC_HOST_DIR}:/src" ${SHELLSPEC} \
+	@$(DOCKER) run --rm -v "${SHELLSPEC_HOST_DIR}:/src" ${SHELLSPEC} \
 	--format progress --jobs 10
 	@echo $(call print_success, "✔ Run Shell unit tests: OK")
 
@@ -59,7 +59,7 @@ shell-lint-tests:
 	@echo ""
 	@echo "- Lint Shell unit tests (ShellSpec):"
 	@echo ""
-	@$(DOCKER) run -it --rm -v "${SHELLSPEC_HOST_DIR}:/src" ${SHELLSPEC} \
+	@$(DOCKER) run --rm -v "${SHELLSPEC_HOST_DIR}:/src" ${SHELLSPEC} \
 		--syntax-check
 	@echo ""
 	@echo $(call print_success, "✔ Lint Shell unit tests \(ShellSpec\): OK")

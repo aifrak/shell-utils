@@ -19,8 +19,11 @@
     "shd101wyy.markdown-preview-enhanced",
     "yzhang.markdown-all-in-one",
 
-    // Formatter:
-    "esbenp.prettier-vscode" // Markdown
+    // Formatters:
+    "esbenp.prettier-vscode", // YAML, (ShellCheck)Markdown
+
+    // Comments:
+    "zfzackfrost.commentbars"
   ],
   // List of extensions recommended by VS Code that should not be recommended for users of this workspace.
   "unwantedRecommendations": []

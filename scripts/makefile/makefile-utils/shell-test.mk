@@ -23,43 +23,43 @@ SHELLSPEC_HOST_DIR := ${PWD}
 shell-help:
 	@echo ""
 	@echo "Shell test commands:"
-	@echo "  shell-test-all:          Run all unit tests and linter for shell scripts"
-	@echo "  shell-linter:            Run shell linter"
-	@echo "  shell-tests:             Run shell unit tests"
-	@echo "  shell-tests-format:      Run check format on ShellSpec files"
+	@echo "  shell-test-all:         Run all unit tests and lint for Shell scripts"
+	@echo "  shell-lint:             Lint Shell scripts"
+	@echo "  shell-test:             Run Shell unit tests"
+	@echo "  shell-test-format:      Lint Shell unit tests (ShellSpec)"
 
 # Run all unit tests and linter for shell scripts
 .PHONY: shell-test-all
-shell-test-all: shell-linter shell-tests-format shell-tests
+shell-test-all: shell-lint shell-lint-tests shell-test
 
-# Run shell linter
-.PHONY: shell-linter
-shell-linter:
+# Lint Shell scripts
+.PHONY: shell-lint
+shell-lint:
 	@echo ""
-	@echo "- Check shell linter:"
+	@echo "- Lint Shell scripts:"
 	@echo ""
 	@$(DOCKER) run --rm -v "${SHELLCHECK_HOST_DIR}:/mnt" ${SHELLCHECK} ${SHELLCHECK_PATH} \
 		--shell=$(SHELL) --format=tty -x
 	@echo ""
-	@echo $(call print_success, "Shell linter: OK")
+	@echo $(call print_success, "✔ Lint Shell scripts: OK")
 
-# Run shell unit tests
-.PHONY: shell-tests
-shell-tests:
+# RunShell unit tests
+.PHONY: shell-test
+shell-test:
 	@echo ""
-	@echo "- Check shell unit tests:"
+	@echo "- Run Shell unit tests:"
 	@echo ""
-	@$(DOCKER) run --rm -v "${SHELLSPEC_HOST_DIR}:/src" ${SHELLSPEC} \
+	@$(DOCKER) run -it --rm -v "${SHELLSPEC_HOST_DIR}:/src" ${SHELLSPEC} \
 	--format progress --jobs 10
-	@echo $(call print_success, "Shell unit tests: OK")
+	@echo $(call print_success, "✔ Run Shell unit tests: OK")
 
-# Run check format on ShellSpec files
-.PHONY: shell-tests-format
-shell-tests-format:
+# Lint Shell unit tests (ShellSpec)
+.PHONY: shell-lint-tests
+shell-lint-tests:
 	@echo ""
-	@echo "- Check format of shell unit tests:"
+	@echo "- Lint Shell unit tests (ShellSpec):"
 	@echo ""
-	@$(DOCKER) run --rm -v "${SHELLSPEC_HOST_DIR}:/src" ${SHELLSPEC} \
+	@$(DOCKER) run -it --rm -v "${SHELLSPEC_HOST_DIR}:/src" ${SHELLSPEC} \
 		--syntax-check
 	@echo ""
-	@echo $(call print_success, "Format of shell unit tests: OK")
+	@echo $(call print_success, "✔ Lint Shell unit tests \(ShellSpec\): OK")

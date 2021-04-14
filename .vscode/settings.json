@@ -21,5 +21,16 @@
   // Markdownlint:
   "markdownlint.config": {
     "MD013": true
-  }
+  },
+
+  // Comment bars:
+  "commentbars.quickPresets": [
+    {
+      "label": "Section title",
+      "fillChar": "-",
+      "width": 50,
+      "thickness": 3,
+      "seamlessFill": false
+    },
+  ]
 }

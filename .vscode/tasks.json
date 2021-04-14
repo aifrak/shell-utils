@@ -3,40 +3,40 @@
   // for the documentation about the tasks.json format
   "version": "2.0.0",
   "tasks": [
-    // -------------------------------------------------------------------------
-    // ---------------------- Shell unit tests / linter ------------------------
-    // -------------------------------------------------------------------------
+    // -----------------------------------------------
+    // --------- Shell unit tests / lint -----------
+    // -----------------------------------------------
     {
       "label": "shell-test-all",
       "type": "shell",
       "command": "make",
       "args": ["shell-test-all"],
       "problemMatcher": [],
-      "detail": "Run all unit tests and linter for shell scripts"
+      "detail": "Run all unit tests and lint for Shell scripts"
     },
     {
-      "label": "shell-linter",
+      "label": "shell-lint",
       "type": "shell",
       "command": "make",
-      "args": ["shell-linter"],
+      "args": ["shell-lint"],
       "problemMatcher": [],
-      "detail": "Run shell linter"
+      "detail": "Lint Shell scripts"
     },
     {
-      "label": "shell-tests",
+      "label": "shell-test",
       "type": "shell",
       "command": "make",
-      "args": ["shell-tests"],
+      "args": ["shell-test"],
       "problemMatcher": [],
-      "detail": "Run shell unit tests"
+      "detail": "Run Shell unit tests"
     },
     {
-      "label": "shell-tests-format",
+      "label": "shell-lint-tests",
       "type": "shell",
       "command": "make",
-      "args": ["shell-tests-format"],
+      "args": ["shell-lint-tests"],
       "problemMatcher": [],
-      "detail": "Run check format on ShellSpec files"
+      "detail": "Lint Shell unit tests (ShellSpec)"
     }
   ]
 }

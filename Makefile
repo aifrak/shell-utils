@@ -2,7 +2,7 @@
 
 MAKEFILE_UTILS_DIR := ./scripts/makefile/makefile-utils
 
-include $(MAKEFILE_UTILS_DIR)/shell-test.mk
+include $(MAKEFILE_UTILS_DIR)/shell-tests.mk
 
 # Print list of commands
 .PHONY: help

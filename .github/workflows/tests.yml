@@ -9,7 +9,7 @@ on:
   pull_request:
 
 jobs:
-  test:
+  tests:
 
     name: Run Shell unit tests
     # Avoid duplicated trigger on "push" and "pull request"

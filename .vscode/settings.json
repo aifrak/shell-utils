@@ -33,14 +33,6 @@
     "MD013": true
   },
 
-  // Comment bars:
-  "commentbars.quickPresets": [
-    {
-      "label": "Section title",
-      "fillChar": "-",
-      "width": 50,
-      "thickness": 3,
-      "seamlessFill": false
-    }
-  ]
+  // Comment Divider:
+  "comment-divider.length": 50
 }

@@ -19,10 +19,10 @@
     "yzhang.markdown-all-in-one",
 
     // Formatters:
-    "esbenp.prettier-vscode", // YAML, (ShellCheck)Markdown
+    "esbenp.prettier-vscode", // YAML, Markdown
 
     // Comments:
-    "zfzackfrost.commentbars"
+    "stackbreak.comment-divider"
   ],
 
   "unwantedRecommendations": []

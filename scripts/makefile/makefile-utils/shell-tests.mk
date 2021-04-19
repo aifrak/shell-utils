@@ -7,14 +7,14 @@ SHELL := sh
 DOCKER := docker
 
 # Docker image for ShellCheck
-SHELLCHECK := koalaman/shellcheck:v0.7.1
+SHELLCHECK := koalaman/shellcheck-alpine:v0.7.1
 # Path of the project inside Docker container
 SHELLCHECK_PATH := ./src/**.sh
 # Path of the project on the host when ShellCheck
 SHELLCHECK_HOST_DIR := ${PWD}
 
 # Docker image for ShellSpec
-SHELLSPEC := shellspec/shellspec:0.28.1
+SHELLSPEC := shellspec/shellspec-scratch:0.28.1
 # Path of the project on the host when ShellSpec
 SHELLSPEC_HOST_DIR := ${PWD}
 

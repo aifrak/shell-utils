@@ -26,8 +26,8 @@ tag_version() {
 
   ask "Push this tag? (y/n)" answer
 
-  (is_yes "$answer" && git_push_tag "$tag" && print_success_tag) ||
-    print_cancel_tag
+  (is_yes "$answer" && git_push_tag "$tag" && print_success_tag) \
+    || print_cancel_tag
 }
 
 # Ask version to user if not previously given in input.

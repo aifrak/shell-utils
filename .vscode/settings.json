@@ -1,23 +1,32 @@
 {
-  // Spelling:
-  "cSpell.userWords": [
-    "Shellcheck",
-    "Shellspec",
-  ],
-  "cSpell.words": [
-    "fkirc",
-    "markdownlint",
-    "nosborn"
-  ],
+  // Editor:
+  "editor.rulers": [80],
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
 
-  // Shellcheck:
+  // Files:
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+
+  // Override languages:
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Spelling:
+  "cSpell.userWords": ["Shellcheck", "Shellspec"],
+  "cSpell.words": ["fkirc", "koalaman", "markdownlint", "nosborn"],
+
+  // Shellformat (Binary version: v3.2.4):
+  "shellformat.effectLanguages": ["shellscript"],
+  "shellformat.useEditorConfig": true,
+
+  // Shellcheck (Binary version: v0.7.1):
   "shellcheck.customArgs": ["--shell=sh", "--format=tty", "-x"],
   "shellcheck.useWorkspaceRootAsCwd": true,
 
   // Task explorer:
-  "taskExplorer.exclude": [
-    "**/spec/**",
-  ],
+  "taskExplorer.exclude": ["**/spec/**"],
 
   // Markdownlint:
   "markdownlint.config": {
@@ -32,6 +41,6 @@
       "width": 50,
       "thickness": 3,
       "seamlessFill": false
-    },
+    }
   ]
 }

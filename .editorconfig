@@ -1,0 +1,22 @@
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+max_line_length = 80
+
+[src/**.sh]
+indent_size = 2
+binary_next_line = true
+switch_case_indent = true
+
+# ShellSpec files: No format to keep indentation
+[spec/**.sh]
+keep_padding = true
+
+[{Makefile,**.mk}]
+indent_style = tab

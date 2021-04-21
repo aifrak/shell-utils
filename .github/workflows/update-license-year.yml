@@ -8,6 +8,7 @@ on:
 
 jobs:
   update-license:
+    name: Update license year
     runs-on: ubuntu-20.04
 
     steps:

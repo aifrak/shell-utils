@@ -119,6 +119,21 @@ quote() {
   eval "$*"
 }
 
+# Return true, if the user is root.
+is_root() {
+  [ "$(id -u)" -eq 0 ]
+}
+
+# Validate checksum sha256 of a file.
+# Input:  $1 -> string Checksum in sha256
+#         $2 -> string File path
+validate_checksum() {
+  CHECKSUM=$1
+  FILE=$2
+
+  print "$CHECKSUM" "$FILE" | sha256sum --quiet --check -
+}
+
 # ---------------------------------------------- #
 #                     Output                     #
 # ---------------------------------------------- #
@@ -188,7 +203,12 @@ prompt() {
 #                      Exit                      #
 # ---------------------------------------------- #
 
-# Wrapper for "die".
+# Wrapper for "exit" when error.
 die() {
   exit 1
+}
+
+# Wrapper for "exit" without error.
+close() {
+  exit 0
 }

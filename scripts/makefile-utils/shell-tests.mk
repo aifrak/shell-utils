@@ -2,8 +2,6 @@
 
 include $(MAKEFILE_UTILS_DIR)/makefile-utils.mk
 
-SHELL := sh
-
 DOCKER := docker
 
 # Docker image for ShellCheck
@@ -39,7 +37,7 @@ shell-lint:
 	@echo "- Lint Shell scripts:"
 	@echo ""
 	@$(DOCKER) run --rm -v "${SHELLCHECK_HOST_DIR}:/mnt" ${SHELLCHECK} ${SHELLCHECK_PATH} \
-		--shell=$(SHELL) --format=tty -x
+		--format=tty -x
 	@echo ""
 	@echo $(call print_success, "✔ Lint Shell scripts: OK")
 

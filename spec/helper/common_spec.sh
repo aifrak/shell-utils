@@ -1,4 +1,7 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
+red="\e[31m"
+normal="\e[0m"
 
 Describe "shell-utils.sh: Common functions"
   Include ./src/shell-utils.sh
@@ -27,6 +30,6 @@ Describe "shell-utils.sh: Common functions"
     When run alert_die "$message"
     The status should be failure
     The output should equal ""
-    The error should equal "${RED}Error: $message${NORMAL}"
+    The error should equal "$(echo -e "${red}Error: $message${normal}")"
   End
 End

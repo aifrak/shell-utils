@@ -1,26 +1,26 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
+set -e
 
 # ---------------------------------------------- #
 #                    Constants                   #
 # ---------------------------------------------- #
 
 # Colors
-export RED="\e[31m"
-export GREEN="\e[32m"
-export YELLOW="\e[33m"
-export NORMAL="\e[0m"
+red="\e[31m"
+green="\e[32m"
+yellow="\e[33m"
+normal="\e[0m"
 
-YES_PATTERN="[Yy]"
+yes_pattern="[Yy]"
 
 # ---------------------------------------------- #
 #                     Git tag                    #
 # ---------------------------------------------- #
 
 # Ask confirmation before pushing tag to git. Else, cancel the operation.
-#
-# Input: $1 -> tag:string
-tag_version() {
-  tag=$1
+function tag_version() {
+  local tag=$1
 
   print_target_tag "$tag"
 
@@ -31,13 +31,9 @@ tag_version() {
 }
 
 # Ask version to user if not previously given in input.
-#
-# Input:  $2 -> name:string Name of the package
-#         $3 -> version:string Version given as input
-# Output: $1 -> version:string Return the input of the user
-ask_version() {
-  name=$2
-  version=$3
+function ask_version() {
+  local name=$2
+  local version=$3
 
   [ -z "$version" ] && ask "Version of $name? (format: x.y.z)" version
 
@@ -45,46 +41,34 @@ ask_version() {
 }
 
 # Validate the given version.
-#
-# Input:  $1 -> name:string Name of the package
-#         $2 -> version:string Version given as input
-# Output: 0 -> int Return 0 when function ends
-validate_version() {
-  name=$1
-  version=$2
+function validate_version() {
+  local name=$1
+  local version=$2
 
   [ -z "$version" ] && alert_die "$name version is empty"
 
   return 0
 }
 
-# Print the given tag.
-#
-# Input:  $1 -> tag:string
-print_target_tag() {
-  tag=$1
+function print_target_tag() {
+  local tag=$1
 
   print_new_line
   print "Version to tag: $tag"
 }
 
-# Print message for tag success.
-print_success_tag() {
+function print_success_tag() {
   print_new_line
   success "Tag pushed"
 }
 
-# Print message for tag cancellation.
-print_cancel_tag() {
+function print_cancel_tag() {
   print_new_line
   warning "Operation cancelled"
 }
 
-# Push tag to git.
-#
-# Input: $1 -> tag:string Tag to push
-git_push_tag() {
-  tag=$1
+function git_push_tag() {
+  local tag=$1
 
   git tag "$tag"
   git push --tags
@@ -94,86 +78,89 @@ git_push_tag() {
 #                     Common                     #
 # ---------------------------------------------- #
 
-# Check the given answer is positive.
-#
-# Input:  $1 -> answer:string Anwser given
-is_yes() {
-  answer=$1
+function is_yes() {
+  local answer=$1
 
-  [ "$answer" != "${answer#$YES_PATTERN}" ]
+  [ "$answer" != "${answer#$yes_pattern}" ]
 }
 
-# Print an error and die.
-#
-# Input:  $1 -> error:string Error to print
-alert_die() {
-  error="$1"
+function alert_die() {
+  local error="$1"
 
   print_new_line
   alert "Error: $error"
   die
 }
 
-# Wrapper for "eval".
-quote() {
+function quote() {
   eval "$*"
 }
 
-# Return true, if the user is root.
-is_root() {
-  [ "$(id -u)" -eq 0 ]
+function is_root() {
+  [[ $(id -u) -eq 0 ]]
 }
 
-# Validate checksum sha256 of a file.
-# Input:  $1 -> string Checksum in sha256
-#         $2 -> string File path
-validate_checksum() {
-  CHECKSUM=$1
-  FILE=$2
+function validate_checksum() {
+  local checksum=$1
+  local file=$2
 
-  print "$CHECKSUM" "$FILE" | sha256sum --quiet --check -
+  print "$checksum" "$file" | sha256sum --quiet --check -
+}
+
+# ---------------------------------------------- #
+#                      Files                     #
+# ---------------------------------------------- #
+
+# Remove directory and its files.
+function remove() {
+  print "Remove $1"
+  rm -rf "$1"
+}
+
+# Remove files in a directory from a pattern.
+function remove_by_pattern() {
+  local target_dir=$1
+  local target_files=$2
+
+  if [[ ! -d $target_dir ]]; then
+    warning "$target_dir already removed: skipped"
+    return 0
+  fi
+
+  print "Remove $target_files in $target_dir"
+  find "$target_dir" -name "$target_files" -delete
 }
 
 # ---------------------------------------------- #
 #                     Output                     #
 # ---------------------------------------------- #
 
-# Wrapper for "echo".
-print() {
-  echo "$*"
+function print() {
+  echo -e "$*"
 }
 
 # Prints an error to STDERR.
-#
-# Input: $* -> string Message to print
-print_error() {
+function print_error() {
   print >&2 "$*"
 }
 
-# Prints a new line.
-print_new_line() {
+function print_new_line() {
   print ""
 }
 
 # Prints a green success message.
-#
-# Input:  $* -> string Message to print
-success() {
-  print "${GREEN}$*${NORMAL}"
+function success() {
+  print "${green}$*${normal}"
 }
 
 # Prints a yellow warning message.
-#
-# Input:  $* -> string Message to print
-warning() {
-  print "${YELLOW}$*${NORMAL}"
+function warning() {
+  print "${yellow}$*${normal}"
 }
 
 # Prints a red error message.
-#
-# Input:  $* -> string Message to print
-alert() {
-  print_error "${RED}$*${NORMAL}"
+function alert() {
+  print_error "${red}$*${normal}"
 }
 
 # ---------------------------------------------- #
@@ -181,10 +168,7 @@ alert() {
 # ---------------------------------------------- #
 
 # Ask a question and gets its answer.
-#
-# Input:  $1 -> error:string Question to print
-# Input:  $* -> error:string Answer
-ask() {
+function ask() {
   question=$1
 
   print_new_line
@@ -195,7 +179,7 @@ ask() {
 }
 
 # Wrapper for "read".
-prompt() {
+function prompt() {
   read -r "$*"
 }
 
@@ -204,11 +188,11 @@ prompt() {
 # ---------------------------------------------- #
 
 # Wrapper for "exit" when error.
-die() {
+function die() {
   exit 1
 }
 
 # Wrapper for "exit" without error.
-close() {
+function close() {
   exit 0
 }

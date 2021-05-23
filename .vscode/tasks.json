@@ -35,6 +35,25 @@
       "args": ["shell-lint-tests"],
       "problemMatcher": [],
       "detail": "Lint Shell unit tests (ShellSpec)"
+    },
+    /* -------------------------------------------- */
+    /*                asdf installer                */
+    /* -------------------------------------------- */
+    {
+      "label": "asdf-install",
+      "type": "shell",
+      "command": "bash",
+      "args": ["./scripts/asdf-installer.sh", "install", "local"],
+      "problemMatcher": [],
+      "detail": "Install asdf plugins and versions from .tool-versions."
+    },
+    {
+      "label": "asdf-uninstall",
+      "type": "shell",
+      "command": "bash",
+      "args": ["./scripts/asdf-installer.sh", "uninstall", "versions"],
+      "problemMatcher": [],
+      "detail": "Uninstall asdf versions environment."
     }
   ]
 }

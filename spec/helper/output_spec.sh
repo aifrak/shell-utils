@@ -1,4 +1,9 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
+red="\e[31m"
+green="\e[32m"
+yellow="\e[33m"
+normal="\e[0m"
 
 Describe "shell-utils.sh: Output functions" utils:output
   Include ./src/shell-utils.sh
@@ -28,14 +33,14 @@ Describe "shell-utils.sh: Output functions" utils:output
     message="It works"
 
     When call success "$message"
-    The output should equal "${GREEN}$message${NORMAL}"
+    The output should equal "$(echo -e "${green}$message${normal}")"
   End
 
   It "should print a warning message"
     message="Be careful!"
 
     When call warning "$message"
-    The output should equal "${YELLOW}$message${NORMAL}"
+    The output should equal "$(echo -e "${yellow}$message${normal}")"
   End
 
   It "should print an alert message"
@@ -44,6 +49,6 @@ Describe "shell-utils.sh: Output functions" utils:output
     When call alert $message
     The status should be success
     The output should equal ""
-    The error should equal "${RED}$message${NORMAL}"
+    The error should equal "$(echo -e "${red}$message${normal}")"
   End
 End

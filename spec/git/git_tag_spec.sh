@@ -1,4 +1,9 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
+red="\e[31m"
+green="\e[32m"
+yellow="\e[33m"
+normal="\e[0m"
 
 Describe "shell-utils.sh: Git tag functions" utils:git-tag
   Include ./src/shell-utils.sh
@@ -85,19 +90,19 @@ Describe "shell-utils.sh: Git tag functions" utils:git-tag
       When run validate_version "$name" "$version"
       The status should be failure
       The output should equal ""
-      The error should equal "${RED}Error: $name version is empty${NORMAL}"
+      The error should equal "$(echo -e "${red}Error: $name version is empty${normal}")"
     End
   End
 
   ExampleGroup "print tag message"
     It "should print cancel tag message"
       When call print_cancel_tag
-      The line 2 of output should equal "${YELLOW}Operation cancelled${NORMAL}"
+      The line 2 of output should equal "$(echo -e "${yellow}Operation cancelled${normal}")"
     End
 
       It "should print success tag message"
       When call print_success_tag
-      The line 2 of output should equal "${GREEN}Tag pushed${NORMAL}"
+      The line 2 of output should equal "$(echo -e "${green}Tag pushed${normal}")"
     End
   End
 

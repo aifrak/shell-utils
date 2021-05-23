@@ -11,13 +11,12 @@ max_line_length = 80
 quote_type = auto
 
 [src/**.sh]
-indent_size = 2
 binary_next_line = true
 switch_case_indent = true
 
 # ShellSpec files: No format to keep indentation
-[spec/**.sh]
+[spec/**_spec.sh]
 keep_padding = true
 
-[{Makefile, **.mk}]
+[{Makefile,*.mk}]
 indent_style = tab

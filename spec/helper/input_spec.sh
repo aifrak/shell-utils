@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 Describe "shell-utils.sh: Input functions" utils:input
   Include ./src/shell-utils.sh

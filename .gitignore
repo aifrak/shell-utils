@@ -1,1 +1,8 @@
+# VSCode
 .history
+
+# Node
+node_modules
+
+# Files genrated by tests
+dummies

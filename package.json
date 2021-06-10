@@ -1,5 +1,10 @@
 {
   "devDependencies": {
-    "prettier": "2.3.0"
+    "markdownlint-cli": "^0.27.1",
+    "prettier": "~2.3.0"
+  },
+  "engines": {
+    "node": "16",
+    "npm": "7"
   }
 }

@@ -9,13 +9,12 @@ Describe "shell-utils.sh: Git tag functions" utils:git-tag
   Include ./src/shell-utils.sh
 
   ExampleGroup "tag_version"
+
     It "should tag a version and print a success message"
+      is_yes() { return 0; }
+
       Mock ask
         # Do nothing
-      End
-
-      Mock is_yes
-        return 0
       End
 
       Mock git_push_tag
@@ -31,12 +30,10 @@ Describe "shell-utils.sh: Git tag functions" utils:git-tag
     End
 
     It "should tag a version and print a cancel message"
+      is_yes() { return 1; }
+
       Mock ask
         # Do nothing
-      End
-
-      Mock is_yes
-        return 1
       End
 
       Mock print_cancel_tag

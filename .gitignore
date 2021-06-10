@@ -2,7 +2,11 @@
 .history
 
 # Node
-node_modules
+node_modules/*
+!node_modules/.gitkeep
+
+# Docker compose
+docker-compose.override.yml
 
 # Files genrated by tests
 dummies

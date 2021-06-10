@@ -1,13 +1,18 @@
 {
-  "recommendations": [
-    // Remote container
-    "ms-vscode-remote.remote-containers",
-
+  "name": "app",
+  "dockerComposeFile": [
+    "../docker-compose.yml",
+    "../docker-compose.dev.yml",
+    "docker-compose.yml"
+  ],
+  "service": "app",
+  "workspaceFolder": "/app",
+  "settings": {
+    "shellformat.path": "/usr/local/bin/shfmt"
+  },
+  "extensions": [
     // EditorConfig
     "editorconfig.editorconfig",
-
-    // Tasks / Makefile targets
-    "spmeesseman.vscode-taskexplorer",
 
     // Github Actions
     "cschleiden.vscode-github-actions",
@@ -21,15 +26,15 @@
 
     // Markdown
     "davidanson.vscode-markdownlint",
-    "shd101wyy.markdown-preview-enhanced",
     "yzhang.markdown-all-in-one",
+
+    // Gitignore
+    "codezombiech.gitignore",
 
     // Formatters
     "esbenp.prettier-vscode",
 
     // Comments
     "stackbreak.comment-divider"
-  ],
-
-  "unwantedRecommendations": []
+  ]
 }

@@ -4,7 +4,7 @@ FROM mvdan/shfmt:v3.3.0 as shfmt
 FROM hadolint/hadolint:v2.4.1 as hadolint
 
 FROM node:16.3.0-buster as node
-RUN npm install -g npm@7.16.0 --quiet
+RUN npm install -g npm@7.17.0 --quiet
 
 FROM ubuntu:groovy-20210524 as base
 

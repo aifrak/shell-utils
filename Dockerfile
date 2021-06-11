@@ -21,8 +21,8 @@ ENV APP_DIR=/app
 
 # Add user and project directory
 RUN \
-  groupadd --gid ${USER_GID} ${USERNAME} \
-  && useradd --uid ${USER_UID} --gid ${GROUPNAME} --shell /bin/bash \
+  groupadd --gid ${USER_GID} ${GROUPNAME} \
+  && useradd --uid ${USER_UID} --gid ${USER_GID} --shell /bin/bash \
     --create-home ${USERNAME} \
   && mkdir ${APP_DIR} \
   && chown ${USER_GID}:${USER_GID} ${APP_DIR}

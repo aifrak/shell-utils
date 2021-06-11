@@ -3,10 +3,10 @@
 yellow="\e[33m"
 normal="\e[0m"
 
-Describe "shell-utils.sh: Exit functions" utils:output
+Describe "shell-utils.sh: File functions" utils:output
   Include ./src/shell-utils.sh
 
-  dummies_dir=./spec/dummies
+  dummies_dir=/tmp/shell-utils/spec/dummies
   fake_dir=$dummies_dir/fake_dir
   not_existing_dir=$dummies_dir/not_existing_dir
   fake_file=$fake_dir/fake_file

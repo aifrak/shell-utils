@@ -1,38 +1,47 @@
 {
   // Editor:
   "editor.rulers": [80],
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
 
   // Files:
+  "files.associations": {
+    "run": "shellscript",
+    ".markdownlintignore": "properties",
+    ".shellspec": "properties"
+  },
   "files.watcherExclude": {
+    "**/.git": true,
     "**/.history/**": true,
     "**/node_modules/**": true
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.history": true
   },
 
   // Search:
   "search.exclude": {
+    "**/.git": true,
     "**/.history": true,
     "**/node_modules": true
   },
 
-  // Shellformat (Binary version: v3.2.4):
-  "shellformat.effectLanguages": ["shellscript"],
+  // Shellformat:
   "shellformat.useEditorConfig": true,
 
-  // Shellcheck (Binary version: v0.7.1):
-  "shellcheck.customArgs": ["--format=tty", "-x"],
+  // Shellcheck:
+  "shellcheck.customArgs": ["-x"],
   "shellcheck.useWorkspaceRootAsCwd": true,
 
   // Task explorer:
+  "taskExplorer.groupSeparator": ":",
   "taskExplorer.exclude": [
     "**/.history/**",
     "**/node_modules/**",
     "**/spec/**"
   ],
-
-  // Markdownlint:
-  "markdownlint.config": {
-    "MD013": true
-  },
 
   // Prettier:
   "prettier.useEditorConfig": true,
@@ -40,7 +49,13 @@
   // Comment Divider:
   "comment-divider.length": 50,
 
+  // Markdown All in One:
+  "markdown.extension.orderedList.marker": "one",
+
   // Override languages:
+  "[dockerfile]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -54,13 +69,25 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
+  // VSIcons:
+  "vsicons.associations.files": [
+    {
+      "icon": "docker",
+      "extensions": ["docker-compose.dev.yml", "docker-compose.override.yml"],
+      "filename": true,
+      "extends": "docker"
+    }
+  ],
+
   // Spelling:
   "cSpell.words": [
+    "BUILDKIT",
+    "Buildx",
     "Shellcheck",
     "Shellspec",
-    "asdf",
+    "devcontainer",
     "markdownlint",
     "shfmt"
   ],
-  "cSpell.ignoreWords": ["fkirc", "koalaman", "markdownlint", "nosborn"]
+  "cSpell.ignoreWords": ["aifrak", "fkirc", "koalaman"]
 }

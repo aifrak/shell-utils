@@ -10,7 +10,7 @@ Describe "shell-utils.sh: Common functions"
     Parameters:value "Y" "y" "yes" "Yes" "YES"
 
     It "should check yes answer with '${1}'"
-      When call is_yes "$1"
+      When call is_yes "${1}"
       The status should be success
     End
   End
@@ -19,7 +19,7 @@ Describe "shell-utils.sh: Common functions"
     Parameters:value "n" "N" "no" "No" "NO"
 
     It "should check no answers with '${1}'"
-      When call is_yes "$1"
+      When call is_yes "${1}"
       The status should be failure
     End
   End

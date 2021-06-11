@@ -10,7 +10,7 @@ insert_final_newline = true
 max_line_length = 80
 quote_type = auto
 
-[src/**.sh]
+[{run,*.sh}]
 binary_next_line = true
 switch_case_indent = true
 
@@ -18,5 +18,8 @@ switch_case_indent = true
 [spec/**_spec.sh]
 keep_padding = true
 
-[{Makefile,*.mk}]
-indent_style = tab
+[{Dockerfile,.dockerfile}]
+binary_next_line = true
+
+[{*.md,*.markdown}]
+trim_trailing_whitespace = false

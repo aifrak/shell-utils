@@ -2,7 +2,12 @@
 .history
 
 # Node
-node_modules
+node_modules/*
+# Folder should exists to avoid root ownership
+!node_modules/.gitkeep
+
+# Docker compose
+docker-compose.override.yml
 
 # Files genrated by tests
 dummies

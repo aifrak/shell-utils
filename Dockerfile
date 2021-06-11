@@ -54,7 +54,9 @@ WORKDIR ${APP_DIR}
 
 # Install project packages
 COPY --chown=${USERNAME} package-lock.json package.json .npmrc ./
-RUN npm ci --quiet
+RUN set -e \
+  && npm ci --quiet \
+  && touch node_modules/.gitkeep
 
 CMD [ "bash" ]
 
@@ -76,9 +78,13 @@ USER ${USERNAME}
 
 FROM dev as vscode
 
+WORKDIR ${HOME}
+
 RUN set -e \
-  && mkdir -p "${HOME}/.vscode-server/extensions" \
-    "${HOME}/.vscode-server-insiders/extensions" \
+  && mkdir -p .vscode-server/extensions \
+    .vscode-server-insiders/extensions \
   && chown -R "${USERNAME}" \
-    "${HOME}/.vscode-server" \
-    "${HOME}/.vscode-server-insiders"
+    .vscode-server \
+    .vscode-server-insiders
+
+WORKDIR ${APP_DIR}

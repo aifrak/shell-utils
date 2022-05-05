@@ -6,7 +6,11 @@ FROM hadolint/hadolint:v2.4.1 as hadolint
 FROM node:16.3.0-buster as node
 RUN npm install -g npm@7.17.0 --quiet
 
-FROM ubuntu:groovy-20210524 as base
+# —————————————————————————————————————————————— #
+#                      base                      #
+# —————————————————————————————————————————————— #
+
+FROM ubuntu:focal-20220426 as base
 
 ENV LANG=C.UTF-8
 
@@ -60,21 +64,37 @@ RUN set -e \
 
 CMD [ "bash" ]
 
+# —————————————————————————————————————————————— #
+#                       dev                      #
+# —————————————————————————————————————————————— #
+
 FROM base as dev
 
 USER root
 
 RUN set -e \
   && export DEBIAN_FRONTEND=noninteractive \
+  && echo "--- Install packages ---" \
   && apt-get update -qq \
-  && apt-get install -y -qq --no-install-recommends ca-certificates=* git=* sudo=* \
+  && apt-get install -y -qq --no-install-recommends \
+    ca-certificates=* \
+    git=* \
+    gnupg2=* \
+    openssh-client=* \
+    sudo=* \
+  && echo "--- Give sudo rights to 'USERNAME' ---" \
   && echo "${USERNAME}" ALL=\(root\) NOPASSWD:ALL >/etc/sudoers.d/"${USERNAME}" \
   && chmod 0440 /etc/sudoers.d/"${USERNAME}" \
+  && echo "--- Clean ---" \
   && apt-get clean \
   && apt-get autoremove \
   && rm -rf /var/lib/apt/lists/*
 
 USER ${USERNAME}
+
+# —————————————————————————————————————————————— #
+#                     vscode                     #
+# —————————————————————————————————————————————— #
 
 FROM dev as vscode
 
@@ -82,9 +102,6 @@ WORKDIR ${HOME}
 
 RUN set -e \
   && mkdir -p .vscode-server/extensions \
-    .vscode-server-insiders/extensions \
-  && chown -R "${USERNAME}" \
-    .vscode-server \
-    .vscode-server-insiders
+    .vscode-server-insiders/extensions
 
 WORKDIR ${APP_DIR}
